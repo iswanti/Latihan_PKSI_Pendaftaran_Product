@@ -41,7 +41,7 @@ class ProductController extends Controller
             'nama_produk' => 'required',
             'kategori'    => 'required',
             'harga'       => 'required|numeric',
-            'deskripsi'   => 'required',
+            'deskripsi'   => 'nullable',
             'dokumen'     => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
         ], [
             'kode_produk.required' => 'Kode produk wajib diisi',
@@ -51,7 +51,6 @@ class ProductController extends Controller
             'kategori.required'    => 'Kategori wajib diisi',
             'harga.required'       => 'Harga wajib diisi',
             'harga.numeric'        => 'Harga harus berupa angka',
-            'deskripsi.required'   => 'Deskripsi wajib diisi',
         ]);
 
         $namaFile = null;
@@ -102,7 +101,7 @@ class ProductController extends Controller
             'nama_produk' => 'required',
             'kategori'    => 'required',
             'harga'       => 'required|numeric',
-            'deskripsi'   => 'required',
+            'deskripsi'   => 'nullable',
             'dokumen'     => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
         ], [
             'kode_produk.required' => 'Kode produk wajib diisi',
@@ -112,7 +111,6 @@ class ProductController extends Controller
             'kategori.required'    => 'Kategori wajib diisi',
             'harga.required'       => 'Harga wajib diisi',
             'harga.numeric'        => 'Harga harus berupa angka',
-            'deskripsi.required'   => 'Deskripsi wajib diisi',
         ]);
 
         if ($request->hasFile('dokumen')) {

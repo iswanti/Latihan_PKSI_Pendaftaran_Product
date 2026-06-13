@@ -52,7 +52,7 @@
                 <div class="mb-3">
                     <label>Kode Produk</label>
                     <input type="text"
-                           name="kode_produk"
+                           name="kode_produk" maxlength="6"
                            class="form-control">
                     @error('kode_produk')
                     <small class="text-danger">{{ $message }}</small>
