@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="container mt-5">
+<div class="container mt-4">
 
     <div class="card">
         <div class="card-header bg-primary text-white">
@@ -24,9 +24,7 @@
 
                 <div class="mb-3">
                     <label>Kode Produk</label>
-                    <input type="text"
-                           name="kode_produk"
-                           class="form-control">
+                    <input type="text" name="kode_produk" class="form-control">
                 </div>
 
                 <div class="mb-3">
