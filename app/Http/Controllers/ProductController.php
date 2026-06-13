@@ -9,12 +9,22 @@ use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
-    // Menampilkan semua produk
-    public function index()
+    // Menampilkan semua produk dan perpage
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $keyword = $request->keyword;
 
-        return view('products.index', compact('products'));
+        $products = Product::when($keyword, function ($query, $keyword) {
+
+                return $query->where('kode_produk', 'like', '%' . $keyword . '%')
+                             ->orWhere('nama_produk', 'like', '%' . $keyword . '%')
+                             ->orWhere('kategori', 'like', '%' . $keyword . '%');
+
+            })
+            ->paginate(5)
+            ->withQueryString();
+
+        return view('products.index', compact('products', 'keyword'));
     }
 
     // Menampilkan form tambah
@@ -145,6 +155,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect('/products');
+        return redirect('/products')
+            ->with('success', 'Data berhasil dihapus');
     }
 }
